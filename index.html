@@ -29,18 +29,13 @@
   /* ── タイトル画面 ── */
   #screen-title { text-align: center; }
   #screen-title h1 { font-size: 2rem; color: #4a3f8e; margin-bottom: 8px; }
-  #screen-title p { color: #888; margin-bottom: 28px; font-size: 0.95rem; }
+  #screen-title p { color: #888; margin-bottom: 20px; font-size: 0.95rem; }
 
-  .mode-buttons { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+  .mode-buttons { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
   .mode-btn {
-    padding: 16px;
-    border-radius: 12px;
-    border: 2px solid transparent;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: all 0.2s;
-    text-align: left;
+    padding: 16px; border-radius: 12px; border: 2px solid transparent;
+    cursor: pointer; font-size: 1rem; font-weight: bold;
+    transition: all 0.2s; text-align: left;
   }
   .mode-btn .mode-title { font-size: 1.05rem; }
   .mode-btn .mode-desc { font-size: 0.8rem; font-weight: normal; margin-top: 4px; opacity: 0.8; }
@@ -49,12 +44,20 @@
   .mode-btn:nth-child(3) { background: #edfff0; color: #3f8e4a; border-color: #b8f5c4; }
   .mode-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
 
-  .region-select label { display: block; font-size: 0.85rem; color: #666; margin-bottom: 6px; }
+  .region-select label { display: block; font-size: 0.85rem; color: #666; margin-bottom: 6px; text-align: left; }
   .region-select select {
     width: 100%; padding: 10px 12px; border-radius: 8px;
     border: 2px solid #ddd; font-size: 0.95rem; color: #333;
-    background: white; cursor: pointer;
+    background: white; cursor: pointer; margin-bottom: 12px;
   }
+
+  .btn-history {
+    display: block; width: 100%; padding: 11px;
+    background: #f5f5f5; color: #555; border: none; border-radius: 12px;
+    font-size: 0.95rem; cursor: pointer; font-family: inherit;
+    transition: background 0.15s; margin-top: 8px;
+  }
+  .btn-history:hover { background: #ede8ff; color: #4a3f8e; }
 
   /* ── クイズ画面 ── */
   #screen-quiz { display: none; }
@@ -72,27 +75,28 @@
   .progress-bar-wrap { background: #eee; border-radius: 99px; height: 8px; margin-bottom: 24px; }
   .progress-bar {
     background: linear-gradient(90deg, #667eea, #764ba2);
-    border-radius: 99px; height: 8px;
-    transition: width 0.4s ease;
+    border-radius: 99px; height: 8px; transition: width 0.4s ease;
   }
 
   .question-label {
-    font-size: 0.8rem; color: #999; text-transform: uppercase;
-    letter-spacing: 1px; margin-bottom: 8px;
+    font-size: 0.8rem; color: #999; letter-spacing: 1px; margin-bottom: 8px;
   }
   .question-text {
     font-size: 1.5rem; font-weight: bold; color: #2d2d2d;
-    margin-bottom: 8px; line-height: 1.4;
+    margin-bottom: 8px; line-height: 1.8;
   }
+  .question-text ruby rt { font-size: 0.5em; font-weight: normal; color: #888; }
   .question-sub { font-size: 0.85rem; color: #aaa; margin-bottom: 24px; }
 
   .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .choice-btn {
-    padding: 14px 10px; border-radius: 12px;
+    padding: 14px 8px; border-radius: 12px;
     border: 2px solid #e0e0e0; background: #fafafa;
-    font-size: 1rem; cursor: pointer; transition: all 0.15s;
+    font-size: 0.95rem; cursor: pointer; transition: all 0.15s;
     font-family: inherit; color: #333; font-weight: 500;
+    line-height: 1.8;
   }
+  .choice-btn ruby rt { font-size: 0.55em; font-weight: normal; color: #999; }
   .choice-btn:hover:not(:disabled) {
     border-color: #764ba2; background: #f5f0ff; color: #4a3f8e;
     transform: translateY(-2px); box-shadow: 0 4px 12px rgba(118,75,162,0.15);
@@ -101,9 +105,7 @@
     background: #e8f8ec; border-color: #4caf50; color: #2e7d32;
     animation: pop 0.3s ease;
   }
-  .choice-btn.wrong {
-    background: #fde8e8; border-color: #f44336; color: #c62828;
-  }
+  .choice-btn.wrong { background: #fde8e8; border-color: #f44336; color: #c62828; }
   .choice-btn:disabled { cursor: default; }
 
   @keyframes pop {
@@ -126,10 +128,10 @@
   .result-icon { font-size: 4rem; margin-bottom: 12px; }
   .result-title { font-size: 1.6rem; font-weight: bold; color: #2d2d2d; margin-bottom: 8px; }
   .result-score { font-size: 3rem; font-weight: bold; color: #4a3f8e; margin-bottom: 4px; }
-  .result-sub { color: #888; font-size: 0.9rem; margin-bottom: 28px; }
+  .result-sub { color: #888; font-size: 0.9rem; margin-bottom: 20px; }
 
   .result-stats {
-    display: flex; justify-content: center; gap: 24px; margin-bottom: 28px;
+    display: flex; justify-content: center; gap: 24px; margin-bottom: 20px;
   }
   .stat-box { text-align: center; }
   .stat-num { font-size: 1.6rem; font-weight: bold; }
@@ -137,15 +139,22 @@
   .stat-box.ok .stat-num { color: #4caf50; }
   .stat-box.ng .stat-num { color: #f44336; }
 
-  .missed-section { text-align: left; margin-bottom: 24px; }
+  .best-score-badge {
+    display: inline-block; background: #fff8e1; border: 2px solid #ffd54f;
+    color: #f57f17; border-radius: 20px; padding: 4px 14px;
+    font-size: 0.85rem; font-weight: bold; margin-bottom: 20px;
+  }
+
+  .missed-section { text-align: left; margin-bottom: 20px; }
   .missed-title { font-size: 0.85rem; color: #888; margin-bottom: 10px; }
-  .missed-list { display: flex; flex-direction: column; gap: 6px; max-height: 180px; overflow-y: auto; }
+  .missed-list { display: flex; flex-direction: column; gap: 6px; max-height: 160px; overflow-y: auto; }
   .missed-item {
     background: #fde8e8; border-radius: 8px; padding: 8px 12px;
     font-size: 0.85rem; color: #c62828;
-    display: flex; justify-content: space-between;
+    display: flex; justify-content: space-between; align-items: center; gap: 8px;
   }
-  .missed-item span { color: #888; }
+  .missed-item ruby rt { font-size: 0.6em; }
+  .missed-item .arrow { color: #bbb; flex-shrink: 0; }
 
   .btn-primary {
     display: block; width: 100%; padding: 14px;
@@ -160,9 +169,65 @@
     display: block; width: 100%; padding: 12px;
     background: #f5f5f5; color: #555; border: none; border-radius: 12px;
     font-size: 0.95rem; cursor: pointer; font-family: inherit;
-    transition: background 0.15s;
+    transition: background 0.15s; margin-bottom: 8px;
   }
   .btn-secondary:hover { background: #eee; }
+
+  /* ── 履歴・ランキング画面 ── */
+  #screen-history { display: none; }
+  .history-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .history-header h2 { font-size: 1.3rem; color: #2d2d2d; }
+  .back-btn {
+    background: none; border: none; cursor: pointer; font-size: 1.3rem;
+    color: #888; padding: 4px; line-height: 1;
+  }
+  .back-btn:hover { color: #4a3f8e; }
+
+  .ranking-section { margin-bottom: 24px; }
+  .section-label {
+    font-size: 0.8rem; color: #999; letter-spacing: 1px;
+    margin-bottom: 10px; text-transform: uppercase;
+  }
+
+  .top3 { display: flex; gap: 8px; margin-bottom: 16px; }
+  .top3-item {
+    flex: 1; text-align: center; padding: 12px 6px;
+    border-radius: 12px; background: #f8f8f8; border: 2px solid #eee;
+  }
+  .top3-item:nth-child(1) { background: #fff8e1; border-color: #ffd54f; }
+  .top3-item:nth-child(2) { background: #f5f5f5; border-color: #bdbdbd; }
+  .top3-item:nth-child(3) { background: #fff3e0; border-color: #ffcc80; }
+  .top3-medal { font-size: 1.4rem; display: block; margin-bottom: 4px; }
+  .top3-score { font-size: 1.2rem; font-weight: bold; color: #2d2d2d; }
+  .top3-pct { font-size: 0.75rem; color: #888; }
+  .top3-mode { font-size: 0.7rem; color: #aaa; margin-top: 2px; }
+
+  .history-list { display: flex; flex-direction: column; gap: 8px; max-height: 260px; overflow-y: auto; }
+  .history-item {
+    background: #fafafa; border: 1px solid #eee; border-radius: 10px;
+    padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .history-item .h-left { display: flex; flex-direction: column; gap: 2px; }
+  .history-item .h-date { font-size: 0.75rem; color: #bbb; }
+  .history-item .h-mode { font-size: 0.85rem; color: #666; }
+  .history-item .h-score { font-size: 1.1rem; font-weight: bold; color: #4a3f8e; }
+  .history-item .h-pct {
+    font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; font-weight: bold;
+  }
+  .h-pct.great { background: #e8f8ec; color: #2e7d32; }
+  .h-pct.good  { background: #e8f0ff; color: #3949ab; }
+  .h-pct.ok    { background: #fff8e1; color: #f57f17; }
+  .h-pct.low   { background: #fde8e8; color: #c62828; }
+
+  .no-history {
+    text-align: center; padding: 40px 20px; color: #ccc; font-size: 0.95rem;
+  }
+  .clear-btn {
+    background: none; border: 1px solid #eee; color: #bbb; border-radius: 8px;
+    padding: 6px 14px; font-size: 0.8rem; cursor: pointer; margin-top: 16px;
+    font-family: inherit;
+  }
+  .clear-btn:hover { border-color: #f44336; color: #f44336; }
 </style>
 </head>
 <body>
@@ -200,6 +265,8 @@
         <option value="kyushu">九州・沖縄</option>
       </select>
     </div>
+
+    <button class="btn-history" onclick="showHistory()">📊 スコア履歴・ランキングを見る</button>
   </div>
 
   <!-- クイズ画面 -->
@@ -213,8 +280,8 @@
     </div>
 
     <div class="question-label" id="question-label">都道府県 → 県庁所在地</div>
-    <div class="question-text" id="question-text">北海道</div>
-    <div class="question-sub" id="question-sub">の県庁所在地はどこ？</div>
+    <div class="question-text" id="question-text"></div>
+    <div class="question-sub" id="question-sub"></div>
 
     <div class="choices" id="choices"></div>
     <div class="feedback" id="feedback"></div>
@@ -226,6 +293,7 @@
     <div class="result-title" id="result-title">すごい！</div>
     <div class="result-score" id="result-score">10 / 10</div>
     <div class="result-sub">正解数</div>
+    <div id="best-score-wrap"></div>
 
     <div class="result-stats">
       <div class="stat-box ok">
@@ -247,78 +315,107 @@
       <div class="missed-list" id="missed-list"></div>
     </div>
 
-    <button class="btn-primary" id="retry-btn" onclick="retryQuiz()">もう一度！</button>
+    <button class="btn-primary" onclick="retryQuiz()">もう一度！</button>
+    <button class="btn-secondary" onclick="showHistory()">📊 履歴・ランキングを見る</button>
     <button class="btn-secondary" onclick="goTitle()">タイトルへ戻る</button>
+  </div>
+
+  <!-- 履歴・ランキング画面 -->
+  <div id="screen-history">
+    <div class="history-header">
+      <button class="back-btn" onclick="goTitle()">←</button>
+      <h2>📊 スコア履歴・ランキング</h2>
+    </div>
+
+    <div class="ranking-section">
+      <div class="section-label">🏆 ベスト3</div>
+      <div class="top3" id="top3"></div>
+    </div>
+
+    <div class="ranking-section">
+      <div class="section-label">📋 最近の記録</div>
+      <div class="history-list" id="history-list"></div>
+    </div>
+
+    <div style="text-align:center">
+      <button class="clear-btn" onclick="clearHistory()">🗑️ 履歴を全部消す</button>
+    </div>
   </div>
 
 </div>
 
 <script>
+/* ═══════════════════════════════════════
+   データ（ふりがな付き）
+═══════════════════════════════════════ */
 const DATA = [
   // 北海道・東北
-  { pref: "北海道", capital: "札幌市", region: "hokkaido" },
-  { pref: "青森県", capital: "青森市", region: "hokkaido" },
-  { pref: "岩手県", capital: "盛岡市", region: "hokkaido" },
-  { pref: "宮城県", capital: "仙台市", region: "hokkaido" },
-  { pref: "秋田県", capital: "秋田市", region: "hokkaido" },
-  { pref: "山形県", capital: "山形市", region: "hokkaido" },
-  { pref: "福島県", capital: "福島市", region: "hokkaido" },
+  { pref:"北海道", prefK:"ほっかいどう", capital:"札幌市",   capitalK:"さっぽろし",   region:"hokkaido" },
+  { pref:"青森県", prefK:"あおもりけん", capital:"青森市",   capitalK:"あおもりし",   region:"hokkaido" },
+  { pref:"岩手県", prefK:"いわてけん",   capital:"盛岡市",   capitalK:"もりおかし",   region:"hokkaido" },
+  { pref:"宮城県", prefK:"みやぎけん",   capital:"仙台市",   capitalK:"せんだいし",   region:"hokkaido" },
+  { pref:"秋田県", prefK:"あきたけん",   capital:"秋田市",   capitalK:"あきたし",     region:"hokkaido" },
+  { pref:"山形県", prefK:"やまがたけん", capital:"山形市",   capitalK:"やまがたし",   region:"hokkaido" },
+  { pref:"福島県", prefK:"ふくしまけん", capital:"福島市",   capitalK:"ふくしまし",   region:"hokkaido" },
   // 関東
-  { pref: "茨城県", capital: "水戸市", region: "kanto" },
-  { pref: "栃木県", capital: "宇都宮市", region: "kanto" },
-  { pref: "群馬県", capital: "前橋市", region: "kanto" },
-  { pref: "埼玉県", capital: "さいたま市", region: "kanto" },
-  { pref: "千葉県", capital: "千葉市", region: "kanto" },
-  { pref: "東京都", capital: "新宿区（都庁）", region: "kanto" },
-  { pref: "神奈川県", capital: "横浜市", region: "kanto" },
+  { pref:"茨城県", prefK:"いばらきけん", capital:"水戸市",   capitalK:"みとし",       region:"kanto" },
+  { pref:"栃木県", prefK:"とちぎけん",   capital:"宇都宮市", capitalK:"うつのみやし", region:"kanto" },
+  { pref:"群馬県", prefK:"ぐんまけん",   capital:"前橋市",   capitalK:"まえばしし",   region:"kanto" },
+  { pref:"埼玉県", prefK:"さいたまけん", capital:"さいたま市",capitalK:"さいたまし",  region:"kanto" },
+  { pref:"千葉県", prefK:"ちばけん",     capital:"千葉市",   capitalK:"ちばし",       region:"kanto" },
+  { pref:"東京都", prefK:"とうきょうと", capital:"新宿区",   capitalK:"しんじゅくく", region:"kanto" },
+  { pref:"神奈川県",prefK:"かながわけん",capital:"横浜市",   capitalK:"よこはまし",   region:"kanto" },
   // 中部
-  { pref: "新潟県", capital: "新潟市", region: "chubu" },
-  { pref: "富山県", capital: "富山市", region: "chubu" },
-  { pref: "石川県", capital: "金沢市", region: "chubu" },
-  { pref: "福井県", capital: "福井市", region: "chubu" },
-  { pref: "山梨県", capital: "甲府市", region: "chubu" },
-  { pref: "長野県", capital: "長野市", region: "chubu" },
-  { pref: "岐阜県", capital: "岐阜市", region: "chubu" },
-  { pref: "静岡県", capital: "静岡市", region: "chubu" },
-  { pref: "愛知県", capital: "名古屋市", region: "chubu" },
+  { pref:"新潟県", prefK:"にいがたけん", capital:"新潟市",   capitalK:"にいがたし",   region:"chubu" },
+  { pref:"富山県", prefK:"とやまけん",   capital:"富山市",   capitalK:"とやまし",     region:"chubu" },
+  { pref:"石川県", prefK:"いしかわけん", capital:"金沢市",   capitalK:"かなざわし",   region:"chubu" },
+  { pref:"福井県", prefK:"ふくいけん",   capital:"福井市",   capitalK:"ふくいし",     region:"chubu" },
+  { pref:"山梨県", prefK:"やまなしけん", capital:"甲府市",   capitalK:"こうふし",     region:"chubu" },
+  { pref:"長野県", prefK:"ながのけん",   capital:"長野市",   capitalK:"ながのし",     region:"chubu" },
+  { pref:"岐阜県", prefK:"ぎふけん",     capital:"岐阜市",   capitalK:"ぎふし",       region:"chubu" },
+  { pref:"静岡県", prefK:"しずおかけん", capital:"静岡市",   capitalK:"しずおかし",   region:"chubu" },
+  { pref:"愛知県", prefK:"あいちけん",   capital:"名古屋市", capitalK:"なごやし",     region:"chubu" },
   // 近畿
-  { pref: "三重県", capital: "津市", region: "kinki" },
-  { pref: "滋賀県", capital: "大津市", region: "kinki" },
-  { pref: "京都府", capital: "京都市", region: "kinki" },
-  { pref: "大阪府", capital: "大阪市", region: "kinki" },
-  { pref: "兵庫県", capital: "神戸市", region: "kinki" },
-  { pref: "奈良県", capital: "奈良市", region: "kinki" },
-  { pref: "和歌山県", capital: "和歌山市", region: "kinki" },
+  { pref:"三重県", prefK:"みえけん",     capital:"津市",     capitalK:"つし",         region:"kinki" },
+  { pref:"滋賀県", prefK:"しがけん",     capital:"大津市",   capitalK:"おおつし",     region:"kinki" },
+  { pref:"京都府", prefK:"きょうとふ",   capital:"京都市",   capitalK:"きょうとし",   region:"kinki" },
+  { pref:"大阪府", prefK:"おおさかふ",   capital:"大阪市",   capitalK:"おおさかし",   region:"kinki" },
+  { pref:"兵庫県", prefK:"ひょうごけん", capital:"神戸市",   capitalK:"こうべし",     region:"kinki" },
+  { pref:"奈良県", prefK:"ならけん",     capital:"奈良市",   capitalK:"ならし",       region:"kinki" },
+  { pref:"和歌山県",prefK:"わかやまけん",capital:"和歌山市", capitalK:"わかやまし",   region:"kinki" },
   // 中国・四国
-  { pref: "鳥取県", capital: "鳥取市", region: "chugoku" },
-  { pref: "島根県", capital: "松江市", region: "chugoku" },
-  { pref: "岡山県", capital: "岡山市", region: "chugoku" },
-  { pref: "広島県", capital: "広島市", region: "chugoku" },
-  { pref: "山口県", capital: "山口市", region: "chugoku" },
-  { pref: "徳島県", capital: "徳島市", region: "chugoku" },
-  { pref: "香川県", capital: "高松市", region: "chugoku" },
-  { pref: "愛媛県", capital: "松山市", region: "chugoku" },
-  { pref: "高知県", capital: "高知市", region: "chugoku" },
+  { pref:"鳥取県", prefK:"とっとりけん", capital:"鳥取市",   capitalK:"とっとりし",   region:"chugoku" },
+  { pref:"島根県", prefK:"しまねけん",   capital:"松江市",   capitalK:"まつえし",     region:"chugoku" },
+  { pref:"岡山県", prefK:"おかやまけん", capital:"岡山市",   capitalK:"おかやまし",   region:"chugoku" },
+  { pref:"広島県", prefK:"ひろしまけん", capital:"広島市",   capitalK:"ひろしまし",   region:"chugoku" },
+  { pref:"山口県", prefK:"やまぐちけん", capital:"山口市",   capitalK:"やまぐちし",   region:"chugoku" },
+  { pref:"徳島県", prefK:"とくしまけん", capital:"徳島市",   capitalK:"とくしまし",   region:"chugoku" },
+  { pref:"香川県", prefK:"かがわけん",   capital:"高松市",   capitalK:"たかまつし",   region:"chugoku" },
+  { pref:"愛媛県", prefK:"えひめけん",   capital:"松山市",   capitalK:"まつやまし",   region:"chugoku" },
+  { pref:"高知県", prefK:"こうちけん",   capital:"高知市",   capitalK:"こうちし",     region:"chugoku" },
   // 九州・沖縄
-  { pref: "福岡県", capital: "福岡市", region: "kyushu" },
-  { pref: "佐賀県", capital: "佐賀市", region: "kyushu" },
-  { pref: "長崎県", capital: "長崎市", region: "kyushu" },
-  { pref: "熊本県", capital: "熊本市", region: "kyushu" },
-  { pref: "大分県", capital: "大分市", region: "kyushu" },
-  { pref: "宮崎県", capital: "宮崎市", region: "kyushu" },
-  { pref: "鹿児島県", capital: "鹿児島市", region: "kyushu" },
-  { pref: "沖縄県", capital: "那覇市", region: "kyushu" },
+  { pref:"福岡県", prefK:"ふくおかけん", capital:"福岡市",   capitalK:"ふくおかし",   region:"kyushu" },
+  { pref:"佐賀県", prefK:"さがけん",     capital:"佐賀市",   capitalK:"さがし",       region:"kyushu" },
+  { pref:"長崎県", prefK:"ながさきけん", capital:"長崎市",   capitalK:"ながさきし",   region:"kyushu" },
+  { pref:"熊本県", prefK:"くまもとけん", capital:"熊本市",   capitalK:"くまもとし",   region:"kyushu" },
+  { pref:"大分県", prefK:"おおいたけん", capital:"大分市",   capitalK:"おおいたし",   region:"kyushu" },
+  { pref:"宮崎県", prefK:"みやざきけん", capital:"宮崎市",   capitalK:"みやざきし",   region:"kyushu" },
+  { pref:"鹿児島県",prefK:"かごしまけん",capital:"鹿児島市", capitalK:"かごしまし",   region:"kyushu" },
+  { pref:"沖縄県", prefK:"おきなわけん", capital:"那覇市",   capitalK:"なはし",       region:"kyushu" },
 ];
 
 const QUIZ_COUNT = 10;
+const STORAGE_KEY = "prefQuizHistory";
 
-let questions = [];
+let questions   = [];
 let currentIndex = 0;
-let score = 0;
-let missed = [];
+let score       = 0;
+let missed      = [];
 let currentMode = "capital";
-let answered = false;
+let currentRegion = "all";
+let answered    = false;
 
+/* ── ユーティリティ ── */
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -328,17 +425,69 @@ function shuffle(arr) {
   return a;
 }
 
+function ruby(text, kana) {
+  return `<ruby>${text}<rt>${kana}</rt></ruby>`;
+}
+
+function modeLabel(mode) {
+  return mode === "capital" ? "県庁所在地モード"
+       : mode === "prefecture" ? "都道府県モード"
+       : "ミックスモード";
+}
+
+function regionLabel(region) {
+  const map = { all:"全国", hokkaido:"北海道・東北", kanto:"関東",
+                chubu:"中部", kinki:"近畿", chugoku:"中国・四国", kyushu:"九州・沖縄" };
+  return map[region] || region;
+}
+
+function allScreensOff() {
+  ["screen-title","screen-quiz","screen-result","screen-history"]
+    .forEach(id => document.getElementById(id).style.display = "none");
+}
+
+/* ══════════════════
+   localStorage 操作
+══════════════════ */
+function loadHistory() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+  catch { return []; }
+}
+
+function saveRecord(record) {
+  const history = loadHistory();
+  history.unshift(record);            // 新しい順
+  if (history.length > 50) history.pop();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+}
+
+function clearHistory() {
+  if (!confirm("履歴を全部消しますか？")) return;
+  localStorage.removeItem(STORAGE_KEY);
+  showHistory();
+}
+
+/* ══════════════════
+   タイトル
+══════════════════ */
+function goTitle() {
+  allScreensOff();
+  document.getElementById("screen-title").style.display = "block";
+}
+
+/* ══════════════════
+   クイズ開始
+══════════════════ */
 function startQuiz(mode) {
   currentMode = mode;
-  const region = document.getElementById("region-select").value;
-  const pool = region === "all" ? DATA : DATA.filter(d => d.region === region);
-  questions = shuffle(pool).slice(0, Math.min(QUIZ_COUNT, pool.length));
+  currentRegion = document.getElementById("region-select").value;
+  const pool = currentRegion === "all" ? DATA : DATA.filter(d => d.region === currentRegion);
+  questions    = shuffle(pool).slice(0, Math.min(QUIZ_COUNT, pool.length));
   currentIndex = 0;
-  score = 0;
-  missed = [];
+  score        = 0;
+  missed       = [];
 
-  document.getElementById("screen-title").style.display = "none";
-  document.getElementById("screen-result").style.display = "none";
+  allScreensOff();
   document.getElementById("screen-quiz").style.display = "block";
   showQuestion();
 }
@@ -346,47 +495,52 @@ function startQuiz(mode) {
 function showQuestion() {
   answered = false;
   const total = questions.length;
-  const q = questions[currentIndex];
+  const q     = questions[currentIndex];
 
-  // モード決定
   let isCapitalMode;
-  if (currentMode === "capital") isCapitalMode = true;
+  if (currentMode === "capital")    isCapitalMode = true;
   else if (currentMode === "prefecture") isCapitalMode = false;
   else isCapitalMode = Math.random() < 0.5;
   q._isCapitalMode = isCapitalMode;
 
   document.getElementById("progress-text").textContent = `${currentIndex + 1} / ${total}`;
-  document.getElementById("score-badge").textContent = `${score}点`;
-  document.getElementById("progress-bar").style.width = `${(currentIndex / total) * 100}%`;
+  document.getElementById("score-badge").textContent   = `${score}点`;
+  document.getElementById("progress-bar").style.width  = `${(currentIndex / total) * 100}%`;
 
   if (isCapitalMode) {
     document.getElementById("question-label").textContent = "都道府県 → 県庁所在地";
-    document.getElementById("question-text").textContent = q.pref;
-    document.getElementById("question-sub").textContent = "の県庁所在地はどこ？";
+    document.getElementById("question-text").innerHTML    = ruby(q.pref, q.prefK);
+    document.getElementById("question-sub").textContent   = "の県庁所在地はどこ？";
   } else {
     document.getElementById("question-label").textContent = "県庁所在地 → 都道府県";
-    document.getElementById("question-text").textContent = q.capital;
-    document.getElementById("question-sub").textContent = "が県庁所在地の都道府県はどれ？";
+    document.getElementById("question-text").innerHTML    = ruby(q.capital, q.capitalK);
+    document.getElementById("question-sub").textContent   = "が県庁所在地の都道府県はどれ？";
   }
 
-  // 選択肢：正解1 + ランダム3
-  const correctAnswer = isCapitalMode ? q.capital : q.pref;
-  const wrongPool = DATA.filter(d => d.pref !== q.pref);
-  const wrongs = shuffle(wrongPool).slice(0, 3).map(d => isCapitalMode ? d.capital : d.pref);
-  const choices = shuffle([correctAnswer, ...wrongs]);
+  // 選択肢
+  const correctText   = isCapitalMode ? q.capital   : q.pref;
+  const correctKana   = isCapitalMode ? q.capitalK  : q.prefK;
+  const wrongPool     = DATA.filter(d => d.pref !== q.pref);
+  const wrongs        = shuffle(wrongPool).slice(0, 3).map(d =>
+    isCapitalMode
+      ? { text: d.capital,  kana: d.capitalK }
+      : { text: d.pref,     kana: d.prefK }
+  );
+  const choices = shuffle([{ text: correctText, kana: correctKana }, ...wrongs]);
 
   const container = document.getElementById("choices");
   container.innerHTML = "";
   choices.forEach(c => {
     const btn = document.createElement("button");
-    btn.className = "choice-btn";
-    btn.textContent = c;
-    btn.onclick = () => selectAnswer(btn, c, correctAnswer, q, isCapitalMode);
+    btn.className  = "choice-btn";
+    btn.innerHTML  = ruby(c.text, c.kana);
+    btn.dataset.value = c.text;   // 比較用プレーンテキスト
+    btn.onclick = () => selectAnswer(btn, c.text, correctText, q, isCapitalMode);
     container.appendChild(btn);
   });
 
   const fb = document.getElementById("feedback");
-  fb.className = "feedback";
+  fb.className  = "feedback";
   fb.textContent = "";
 }
 
@@ -397,19 +551,20 @@ function selectAnswer(btn, selected, correct, q, isCapitalMode) {
   const allBtns = document.querySelectorAll(".choice-btn");
   allBtns.forEach(b => {
     b.disabled = true;
-    if (b.textContent === correct) b.classList.add("correct");
+    if (b.dataset.value === correct) b.classList.add("correct");
   });
 
   const fb = document.getElementById("feedback");
   if (selected === correct) {
     score++;
     btn.classList.add("correct");
-    fb.textContent = "⭕ 正解！";
-    fb.className = "feedback ok show";
+    fb.textContent  = "⭕ 正解！";
+    fb.className    = "feedback ok show";
   } else {
     btn.classList.add("wrong");
-    fb.textContent = `❌ 不正解… 正解は「${correct}」`;
-    fb.className = "feedback ng show";
+    const correctKana = isCapitalMode ? q.capitalK : q.prefK;
+    fb.innerHTML  = `❌ 不正解… 正解は「${ruby(correct, correctKana)}」`;
+    fb.className  = "feedback ng show";
     missed.push({ q, isCapitalMode });
   }
 
@@ -417,20 +572,41 @@ function selectAnswer(btn, selected, correct, q, isCapitalMode) {
 
   setTimeout(() => {
     currentIndex++;
-    if (currentIndex < questions.length) {
-      showQuestion();
-    } else {
-      showResult();
-    }
+    if (currentIndex < questions.length) showQuestion();
+    else showResult();
   }, 1200);
 }
 
+/* ══════════════════
+   結果画面
+══════════════════ */
 function showResult() {
-  document.getElementById("screen-quiz").style.display = "none";
+  allScreensOff();
   document.getElementById("screen-result").style.display = "block";
 
   const total = questions.length;
-  const pct = Math.round((score / total) * 100);
+  const pct   = Math.round((score / total) * 100);
+
+  // 履歴に保存
+  const record = {
+    date: new Date().toLocaleString("ja-JP", { month:"numeric", day:"numeric",
+          hour:"2-digit", minute:"2-digit" }),
+    mode: currentMode, region: currentRegion, score, total, pct
+  };
+  saveRecord(record);
+
+  // ベストスコア判定
+  const history     = loadHistory();
+  const sameMode    = history.filter(h => h.mode === currentMode && h.total === total);
+  const bestPct     = Math.max(...sameMode.map(h => h.pct));
+  const isNewBest   = sameMode.length === 1 || (pct === bestPct && sameMode.filter(h => h.pct === bestPct).length === 1);
+
+  const wrap = document.getElementById("best-score-wrap");
+  wrap.innerHTML = isNewBest && pct > 0
+    ? `<div class="best-score-badge">🌟 自己ベスト更新！</div>`
+    : bestPct > 0 && sameMode.length > 1
+      ? `<div class="best-score-badge">📈 自己ベスト：${bestPct}%</div>`
+      : "";
 
   let icon, title;
   if (pct === 100) { icon = "🏆"; title = "パーフェクト！！！"; }
@@ -439,15 +615,15 @@ function showResult() {
   else if (pct >= 40) { icon = "😅"; title = "もう少し！練習しよう"; }
   else { icon = "😢"; title = "がんばれ！また挑戦！"; }
 
-  document.getElementById("result-icon").textContent = icon;
+  document.getElementById("result-icon").textContent  = icon;
   document.getElementById("result-title").textContent = title;
   document.getElementById("result-score").textContent = `${score} / ${total}`;
-  document.getElementById("stat-ok").textContent = score;
-  document.getElementById("stat-ng").textContent = total - score;
-  document.getElementById("stat-pct").textContent = pct + "%";
+  document.getElementById("stat-ok").textContent      = score;
+  document.getElementById("stat-ng").textContent      = total - score;
+  document.getElementById("stat-pct").textContent     = pct + "%";
 
   const missedSection = document.getElementById("missed-section");
-  const missedList = document.getElementById("missed-list");
+  const missedList    = document.getElementById("missed-list");
   missedList.innerHTML = "";
 
   if (missed.length === 0) {
@@ -458,22 +634,85 @@ function showResult() {
       const div = document.createElement("div");
       div.className = "missed-item";
       if (isCapitalMode) {
-        div.innerHTML = `<b>${q.pref}</b><span>→ ${q.capital}</span>`;
+        div.innerHTML = `<span>${ruby(q.pref, q.prefK)}</span>
+                         <span class="arrow">→</span>
+                         <span>${ruby(q.capital, q.capitalK)}</span>`;
       } else {
-        div.innerHTML = `<b>${q.capital}</b><span>→ ${q.pref}</span>`;
+        div.innerHTML = `<span>${ruby(q.capital, q.capitalK)}</span>
+                         <span class="arrow">→</span>
+                         <span>${ruby(q.pref, q.prefK)}</span>`;
       }
       missedList.appendChild(div);
     });
   }
 }
 
-function retryQuiz() {
-  startQuiz(currentMode);
-}
+function retryQuiz() { startQuiz(currentMode); }
 
-function goTitle() {
-  document.getElementById("screen-result").style.display = "none";
-  document.getElementById("screen-title").style.display = "block";
+/* ══════════════════
+   履歴・ランキング画面
+══════════════════ */
+function showHistory() {
+  allScreensOff();
+  document.getElementById("screen-history").style.display = "block";
+
+  const history = loadHistory();
+
+  // ── ベスト3 ──
+  const top3El = document.getElementById("top3");
+  const medals = ["🥇","🥈","🥉"];
+  const sorted = [...history].sort((a, b) => b.pct - a.pct || b.score - a.score);
+  const top3   = sorted.slice(0, 3);
+
+  if (top3.length === 0) {
+    top3El.innerHTML = `<div style="color:#ccc;font-size:0.9rem;padding:12px">まだ記録がありません</div>`;
+  } else {
+    top3El.innerHTML = "";
+    // 表示順: 2位・1位・3位（台形レイアウト）
+    const order = top3.length >= 3 ? [top3[1], top3[0], top3[2]]
+                : top3.length === 2 ? [top3[1], top3[0]]
+                : [top3[0]];
+    const medalOrder = top3.length >= 3 ? ["🥈","🥇","🥉"]
+                     : top3.length === 2 ? ["🥈","🥇"] : ["🥇"];
+
+    order.forEach((item, i) => {
+      if (!item) return;
+      const div = document.createElement("div");
+      div.className = "top3-item";
+      div.innerHTML = `
+        <span class="top3-medal">${medalOrder[i]}</span>
+        <div class="top3-score">${item.score}/${item.total}</div>
+        <div class="top3-pct">${item.pct}%</div>
+        <div class="top3-mode">${modeLabel(item.mode)}</div>
+      `;
+      top3El.appendChild(div);
+    });
+  }
+
+  // ── 最近の記録 ──
+  const listEl = document.getElementById("history-list");
+  if (history.length === 0) {
+    listEl.innerHTML = `<div class="no-history">📭 まだ記録がありません<br>クイズに挑戦しよう！</div>`;
+    return;
+  }
+
+  listEl.innerHTML = "";
+  history.forEach((h, i) => {
+    const pctClass = h.pct === 100 ? "great" : h.pct >= 70 ? "good" : h.pct >= 40 ? "ok" : "low";
+    const div = document.createElement("div");
+    div.className = "history-item";
+    div.innerHTML = `
+      <div class="h-left">
+        <span class="h-date">${h.date}　${regionLabel(h.region)}</span>
+        <span class="h-mode">${modeLabel(h.mode)}</span>
+      </div>
+      <div style="text-align:right">
+        <div class="h-score">${h.score} / ${h.total}</div>
+        <span class="h-pct ${pctClass}">${h.pct}%</span>
+      </div>
+    `;
+    listEl.appendChild(div);
+  });
 }
 </script>
 </body>
